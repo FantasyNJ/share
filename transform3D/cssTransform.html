@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrap{
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+            margin: 100px auto;
+        }
+        .app{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            display: inline-block;
+        }
+        .aaa{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrap">
+    <div class="app"></div>
+    <div class="aaa"></div>
+</div>
+
+
+<script>
+    var app = document.querySelector('.app');
+
+    function cssTransform( elem, attr, val ){
+        if ( !elem.transform ){
+            elem.transform = {};
+        }
+
+        if ( !val ){
+            if ( !elem.transform[attr] ){
+                switch (attr){
+                    case 'scale':
+                    case 'scaleX':
+                    case 'scaleY':
+                        elem.transform[attr] = 1;
+                        break;
+                    default:
+                        elem.transform[attr] = 0;
+                        break;
+                }
+                return elem.transform[attr];
+            }
+        }else{
+            elem.transform[attr] = val;
+            var transformVal = '';
+            for( var s in elem.transform ){
+                switch (s){
+                    case "rotate":
+                    case "rotateX":
+                    case "rotateY":
+                    case "rotateZ":
+                    case "skewX":
+                    case "skewY":
+                        transformVal += " "+s+"("+elem.transform[s]+"deg)";
+                        break;
+                    case "scale":
+                    case "scaleX":
+                    case "scaleY":
+                    case "scaleZ":
+                        transformVal += " "+s+"("+elem.transform[s]+")";
+                        break;
+                    case "translateX":
+                    case "translateY":
+                    case "translateZ":
+                        transformVal += " "+s+"("+elem.transform[s]+"px)";
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+
+            elem.style.WebkitTransform = elem.style.MozTransform = elem.style.MsTransform = elem.style.OTransform = elem.style.transform = transformVal;
+        }
+    }
+
+</script>
+</body>
+</html>
