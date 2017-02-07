@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrap{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+        .in{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+        }
+        .demo1{
+            background-color: red;
+            transform:translate(100px, 100px) rotate(45deg);
+        }
+        .demo2{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="in demo1"></div><div class="in demo2"></div>
+</div>
+
+<script>
+    var demo1 = document.querySelector('.demo1');
+
+    demo1.onmousemove = function(){
+        console.log('move');
+    }
+</script>
+</body>
+</html>
