@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrap{
+            perspective: 300px;
+        }
+        .box{
+            margin: 200px auto;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .box{
+            transform: translateZ(100px);
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="box"></div>
+</div>
+</body>
+</html>
+<!--
+    perspective 景深（我再多远的距离看这个元素，加给要做3D变换元素的父级！！！）
+    rotateX  rotateY  rotateZ  rotate3D
+    translateX  translateY  translateZ  translate3D
+-->

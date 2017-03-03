@@ -1,0 +1,293 @@
+<h2 id="toc_0">transform属性</h2>
+
+<ul>
+    <li><a href="#%E5%8F%98%E5%BD%A2">transform变形</a>
+
+        <ul>
+            <li><a href="#2d-%E5%8F%98%E5%BD%A2">2D 变形</a></li>
+            <li><a href="#transform">transform</a>
+
+                <ul>
+                    <li><a href="#rotate">rotate()</a></li>
+                    <li><a href="#transform-origin">transform-origin</a></li>
+                    <li><a href="#translate">translate()</a></li>
+                    <li><a href="#scale">scale()</a></li>
+                    <li><a href="#skew">skew()</a></li>
+                </ul></li>
+            <li><a href="#3d-%E5%8F%98%E5%BD%A2">3D 变形</a></li>
+            <li><a href="#rotatey">rotateY()</a></li>
+            <li><a href="#perspective">perspective</a></li>
+            <li><a href="#perspective-origin">perspective-origin</a></li>
+            <li><a href="#translate3d">translate3d()</a></li>
+            <li><a href="#scale3d">scale3d()</a></li>
+            <li><a href="#rotate3d">rotate3d()</a></li>
+            <li><a href="#transform-style">transform-style</a></li>
+            <li><a href="#backface-visibility">backface-visibility</a></li>
+        </ul></li>
+</ul>
+
+<h4 id="toc_1">2D 变形</h4>
+
+<h5 id="toc_2">transform</h5>
+
+<p><code>transform</code> 中可以写一个或多个方法。</p>
+
+<p>transform 变换后只会占据 transform 变换前的文档流位置，不会占据变换后的位置，仍然在标准文档流中。元素事件触发是在 transform 变换后的位置。</p>
+
+<div><pre><code class="language-none">transform: none
+&lt;!-- 默认值为 none --&gt;
+
+transform: translate(50%) rotate(45deg);
+transform: rotate(45deg) transform(50%)
+&lt;!-- 变形函数顺序普通结果不同，原因是坐标位置发生了改变 --&gt;</code></pre></div>
+
+<p><img src="http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-transform-function.png" alt=""></p>
+
+<h6 id="toc_3">translate()</h6>
+
+<p>移动方法，参数分别代表 X 与 Y 轴的移动（偏移值均可为负值）。</p>
+
+<div><pre><code class="language-none">translate(&lt;translation-value&gt;[, &lt;translation-value&gt;]?)
+
+&lt;!-- 也可单独设置 X 与 Y 轴的偏移 --&gt;
+translationX(&lt;translation-value&gt;)
+translationY(&lt;translation-value&gt;)
+
+transform: translate(50px);
+transform: translate(50px, 20%);
+&lt;!-- Y 轴偏移为偏移对象的高度，X 轴为宽度 --&gt;
+transform: translate(-50px);
+transform: translate(20%);</code></pre></div>
+
+<p><img src="http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-traslate.png" alt=""></p>
+
+<h6 id="toc_4">rotate()</h6>
+
+<div><pre><code class="language-none">rotate(&lt;angle&gt;)
+&lt;!-- 只能传入一个旋转角度值,绕Z轴旋转 --&gt;
+
+rotate(45deg);
+&lt;!-- 右边旋转，顺时针 --&gt;
+rotate(-60deg);
+&lt;!-- 左边旋转，逆时针 --&gt;</code></pre></div>
+
+<p><img src="http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-rotate.png" alt=""></p>
+
+<h6 id="toc_5">scale()</h6>
+
+<p>缩放方法，参数分别代表 X 与 Y 轴的缩放（缩放值均可为小数）。当第二值忽略时，默认设置为等同第一值。</p>
+
+<div><pre><code class="language-none">scale(&lt;number&gt; [, &lt;number&gt;]?)
+
+scaleX(&lt;number&gt;)
+scaleY(&lt;number&gt;)
+
+&lt;!-- 整体放大 1.2 倍 --&gt;
+transform: scale(1.2);
+&lt;!-- 高度拉伸 --&gt;
+transform: scale(1, 1.2);
+&lt;!-- 宽度拉伸 --&gt;
+transform: scaleX(1.2);
+&lt;!-- 高度拉伸 --&gt;
+transform: scaleY(1.2);</code></pre></div>
+
+<p><img src="http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-scale.png" alt=""></p>
+
+<h6 id="toc_6">skew()</h6>
+
+<p>其为倾斜的方法。第一值为 Y 轴往 X 方向倾斜（逆时针），第二值为 X 轴往 Y 方向倾斜（顺时针）。（倾斜值可为负值）</p>
+
+<div><pre><code class="language-none">skew(&lt;angle&gt;[, &lt;angle&gt;]?)
+
+skewX(&lt;angle&gt;)
+skewY(&lt;angle&gt;)
+
+transform: skew(30deg);
+transform: skew(30deg, 30deg);
+transform: skewX(30deg);
+transform: skewY(30deg);</code></pre></div>
+
+<p><img src="http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-skew.png" alt=""></p>
+
+<h6 id="toc_7">transform-origin</h6>
+
+<p>其用于设置原点的位置（默认位置为元素中心）第一值为 X 方向，第二值为 Y 方向， 第三值为 Z 方向。（当值空出未写的情况下默认为 50%）</p>
+
+<div><pre><code class="language-none">transform-origin: [ &lt;percentage&gt; | &lt;length&gt; | left | center | right | top | bottom] | [ [ &lt;percentage&gt; | &lt;length&gt; | left | center | right ] &amp;&amp; [ &lt;percentage&gt; | &lt;length&gt; | top | center | bottom ] ] &lt;length&gt;?
+
+&lt;!-- 默认值为 50% 50% --&gt;
+
+transform-origin: 50% 50%;
+transform-origin: 0 0;
+transform-origin: right 50px 20px;
+transform-origin: top right 20px;</code></pre></div>
+
+<p><img src="http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-origin.png" alt=""></p>
+
+<h5 id="toc_8">matrix</h5>
+
+<p>matrix默认值 <code>transform: matrix(1, 0, 0, 1, 0, 0)</code></p>
+
+<p><code>transform: matrix(a, b, c, d, e, f)</code> </p>
+
+<ul>
+    <li>位移：
+
+        <ul>
+            <li>x轴位移 = e + x;</li>
+            <li>y轴位移 = f+ y;</li>
+        </ul></li>
+    <li>缩放：
+
+        <ul>
+            <li>x轴：<br>
+                a = a * x;<br>
+                c = c * x;<br>
+                e = e * x;<br></li>
+            <li>y轴：<br>
+                b = b* x;<br>
+                d = d* x;<br>
+                f = f * x;</li>
+        </ul></li>
+    <li>斜切：
+
+        <ul>
+            <li>x轴斜切（deg）：<br>
+                c = Math.tan( deg / 180 * Math.PI );<br></li>
+            <li>y轴斜切（deg）：<br>
+                b= Math.tan( deg / 180 * Math.PI );</li>
+        </ul></li>
+    <li>旋转：<br>
+        a = Math.cos( deg / 180 * Math.PI );<br>
+        b = Math.sin( deg / 180 * Math.PI );<br>
+        c = -Math.sin( deg / 180 * Math.PI );<br>
+        d = Math.cos( deg / 180 * Math.PI );<br></li>
+</ul>
+
+<h4 id="toc_9">3D 变形</h4>
+
+<h5 id="toc_10">rotateY()</h5>
+
+<p>3D 空间旋转。</p>
+
+<div><pre><code class="language-none">transform: rotateY(&lt;angle&gt;)</code></pre></div>
+
+<h5 id="toc_11">perspective</h5>
+
+<p><img src="http://wiki.jikexueyuan.com/project/fend_note/images/P/perspective-3d.PNG" alt=""></p>
+
+<p><code>&lt;length&gt;</code> 可以理解为人眼与元素之间的距离，越紧则效果越明显。</p>
+
+<blockquote>
+    <ol>
+        <li>没有perspective就没有真3D<br></li>
+        <li>当perpective的值越小，3D效果就越明显（就是眼睛越靠近物体）</li>
+        <li>当perpective的值为无穷大，值为0，不写perpective属性时，这三种情况的效果一样。元素就是正常的大小。</li>
+        <li>当translateZ与perspective的值相同时元素消失（在视角之后看不到）</li>
+    </ol>
+</blockquote>
+
+<div><pre><code class="language-none">perspective: none | &lt;length&gt;
+&lt;-- 默认值。与 0 相同。不设置透视。 --&gt;
+
+perspective: none;
+perspective: 2000px;
+perspective: 500px;</code></pre></div>
+
+<p><img src="http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-perspective.png" alt=""></p>
+
+<h5 id="toc_12">perspective-origin</h5>
+
+<p>其为设定透视的角度（透视位置均可设定为负值）。</p>
+
+<div><pre><code class="language-none">perspective-origin: [ &lt;percentage&gt; | &lt;length&gt; | left | center | right | top | bottom] | [ [ &lt;percentage&gt; | &lt;length&gt; | left | center | right ] &amp;&amp; [ &lt;percentage&gt; | &lt;length&gt; | top | center | bottom ] ]
+
+perspective-origin: 50% 50%
+&lt;!-- 默认值为 50% 50% 正中间的位置进行透视 --&gt;
+perspective-origin: left bottom;
+perspective-origin: 50% -800px;
+perspective-origin: right;</code></pre></div>
+
+<p><img src="http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-perspective-origin.png" alt=""></p>
+
+<h5 id="toc_13">translate3d()</h5>
+
+<div><pre><code class="language-none">translate3d(&lt;translate-value&gt;, &lt;translate-value&gt;, &lt;length&gt;)
+
+translateX(&lt;translate-value&gt;)
+translateY(&lt;translate-value&gt;)
+translateZ(&lt;length&gt;)
+
+transform: translate3d(10px, 20%, 50px);
+&lt;!-- %的参照物为自身元素 --&gt;
+transform: translateX(10px);
+transform: translateY(20%);
+transform: translateZ(-100px);</code></pre></div>
+
+<p><img src="http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-translate3d.png" alt=""></p>
+
+<h5 id="toc_14">scale3d()</h5>
+
+<div><pre><code class="language-none">scale3d(&lt;number&gt;, &lt;number&gt;, &lt;number&gt;)
+
+scaleX(&lt;number&gt;)
+scaleY(&lt;number&gt;)
+scaleZ(&lt;number&gt;)
+
+transform: scale3d(1.2, 1.2, 1);
+transform: scale3d(1, 1.2, 1);
+transform: scale3d(1.2, 1, 1);
+transform: scaleZ(5);
+&lt;!-- Z 轴的缩放扩大并不影响盒子大小 --&gt;</code></pre></div>
+
+<p><img src="http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-scale3d.png" alt=""></p>
+
+<h5 id="toc_15">rotate3d()</h5>
+
+<p>取 X Y Z 三轴上的一点并于坐标原点连线，以连线为轴进行旋转（逆时针）。</p>
+
+<div><pre><code class="language-none">rotate3d(&lt;number&gt;, &lt;number&gt;, &lt;number&gt;, &lt;angle&gt;)
+
+rotateX(&lt;angle&gt;)
+rotateY(&lt;angle&gt;)
+rotateZ(&lt;angle&gt;)
+
+transform: rotate3d(1, 0, 0, 45deg);
+&lt;!-- 上面等同于 X 轴旋转 --&gt;
+transform: rotate3d(0, 1, 0, 45deg);
+&lt;!-- 上面等同于 Y 轴旋转 --&gt;
+transform: rotate3d(0, 0, 1, 45deg);
+&lt;!-- 上面等同于 2D 旋转 --&gt;
+transform: rotate3d(1, 1, 1, 45deg);</code></pre></div>
+
+<p><img src="http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-rotate3d.png" alt=""></p>
+
+<h5 id="toc_16">transform-style</h5>
+
+<p>其用于设置保留内部的 3D 空间，原因是一个元素进行<code>transform</code>之后内部默认为<code>flat</code>。</p>
+
+<div><pre><code class="language-none">transform-style: flat | perserve-3d
+
+&lt;!-- 默认为 flat --&gt;
+
+transform-style: flat;
+transform-style: preserve-3d;</code></pre></div>
+
+<p><img src="http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-transform-style.png" alt=""></p>
+
+<h5 id="toc_17">backface-visibility</h5>
+
+<p>其用于设置背面不可见。</p>
+
+<div><pre><code class="language-none">backface-visibility: visible | hidden
+
+backface-visibility: visible;
+backface-visibility: hidden;</code></pre></div>
+
+<p><img src="http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-backface-visibility.png" alt=""></p>
+
+<h5 id="toc_18">在Webstorm中使用Autoprefixer</h5>
+
+<p><a href="http://www.css88.com/archives/5670">Autoprefixer</a></p>
+
+<p>http://www.css88.com/archives/5670</p>

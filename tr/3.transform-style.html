@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrap{
+            perspective: 300px;
+        }
+        .box{
+            margin: 200px auto;
+            width: 200px;
+            height: 200px;
+        }
+        .box1{
+            background-color: red;
+            transform: rotateX(45deg);
+            /*transform-style: preserve-3d;*/
+        }
+        .box2{
+            background-color: blue;
+            transform: rotateY(45deg);
+            /*transform-style: preserve-3d;*/
+        }
+        .box3{
+            background-color: yellow;
+            transform: rotateX(30deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box box1">
+            <div class="box box2">
+                <div class="box box3"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<!--
+    transform-style 元素在做3D变换的时候是否保留子元素的3D变换
+        flat 不保留
+        preserve-3d 保留
+-->

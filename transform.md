@@ -36,37 +36,6 @@ transform: rotate(45deg) transform(50%)
 
 ![](http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-transform-function.png)
 
-###### rotate()
-
-```
-rotate(<angle>)
-<!-- 只能传入一个旋转角度值,绕Z轴旋转 -->
-
-rotate(45deg);
-<!-- 右边旋转，顺时针 -->
-rotate(-60deg);
-<!-- 左边旋转，逆时针 -->
-```
-
-![](http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-rotate.png)
-
-###### transform-origin
-
-其用于设置原点的位置（默认位置为元素中心）第一值为 X 方向，第二值为 Y 方向， 第三值为 Z 方向。（当值空出未写的情况下默认为 50%）
-
-```
-transform-origin: [ <percentage> | <length> | left | center | right | top | bottom] | [ [ <percentage> | <length> | left | center | right ] && [ <percentage> | <length> | top | center | bottom ] ] <length>?
-
-<!-- 默认值为 50% 50% -->
-
-transform-origin: 50% 50%;
-transform-origin: 0 0;
-transform-origin: right 50px 20px;
-transform-origin: top right 20px;
-```
-
-![](http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-origin.png)
-
 ###### translate()
 
 移动方法，参数分别代表 X 与 Y 轴的移动（偏移值均可为负值）。
@@ -86,6 +55,20 @@ transform: translate(20%);
 ```
 
 ![](http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-traslate.png)
+
+###### rotate()
+
+```
+rotate(<angle>)
+<!-- 只能传入一个旋转角度值,绕Z轴旋转 -->
+
+rotate(45deg);
+<!-- 右边旋转，顺时针 -->
+rotate(-60deg);
+<!-- 左边旋转，逆时针 -->
+```
+
+![](http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-rotate.png)
 
 ###### scale()
 
@@ -126,6 +109,24 @@ transform: skewY(30deg);
 ```
 
 ![](http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-skew.png)
+
+
+###### transform-origin
+
+其用于设置原点的位置（默认位置为元素中心）第一值为 X 方向，第二值为 Y 方向， 第三值为 Z 方向。（当值空出未写的情况下默认为 50%）
+
+```
+transform-origin: [ <percentage> | <length> | left | center | right | top | bottom] | [ [ <percentage> | <length> | left | center | right ] && [ <percentage> | <length> | top | center | bottom ] ] <length>?
+
+<!-- 默认值为 50% 50% -->
+
+transform-origin: 50% 50%;
+transform-origin: 0 0;
+transform-origin: right 50px 20px;
+transform-origin: top right 20px;
+```
+
+![](http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-origin.png)
 
 ##### matrix
 
@@ -291,3 +292,8 @@ backface-visibility: hidden;
 ```
 
 ![](http://wiki.jikexueyuan.com/project/fend_note/images/T/transform-backface-visibility.png)
+
+##### 在Webstorm中使用Autoprefixer
+[Autoprefixer](http://www.css88.com/archives/5670)
+
+http://www.css88.com/archives/5670
